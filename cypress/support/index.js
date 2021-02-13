@@ -26,3 +26,20 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 })
 
 Cypress.config('defaultCommandTimeout', 10000);
+
+before(() => {
+    cy.clearCookies();
+    cy.clearLocalStorage();
+    cy.clearSessionStorage();
+});
+
+beforeEach(() => {
+    cy.preserveCookies();
+    cy.restoreSessionStorageCache();
+    cy.restoreLocalStorageCache();
+});
+
+afterEach(() => {
+    cy.saveSessionStorageCache();
+    cy.saveLocalStorageCache();
+});

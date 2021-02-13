@@ -1,0 +1,23 @@
+{
+  "name": "cypressanywhere-examples",
+  "version": "1.0.0",
+  "description": "Please create `cypress.env.json` file and fill it with the content",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "cypress": "6.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karolinabogacka/cypressanywhere-examples.git"
+  },
+  "author": "karolina.bogacka@cypressanywhere.io",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karolinabogacka/cypressanywhere-examples/issues"
+  },
+  "homepage": "https://github.com/karolinabogacka/cypressanywhere-examples#readme"
+}
