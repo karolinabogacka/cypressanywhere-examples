@@ -24,6 +24,54 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
+// Keep localStorage data
+let LOCAL_STORAGE_MEMORY = {};
+
+Cypress.Commands.add("saveLocalStorageCache", () => {
+    Object.keys(localStorage).forEach(key => {
+        LOCAL_STORAGE_MEMORY[key] = localStorage[key];
+    });
+});
+
+Cypress.Commands.add("restoreLocalStorageCache", () => {
+    Object.keys(LOCAL_STORAGE_MEMORY).forEach(key => {
+        localStorage.setItem(key, LOCAL_STORAGE_MEMORY[key]);
+    });
+});
+
+Cypress.Commands.add("clearLocalStorage", () => {
+    Object.keys(localStorage).forEach(key => {
+        localStorage.removeItem(key);
+    });
+});
+  
+// Keep sessionStorage data
+let SESSION_STORAGE_MEMORY = {};
+
+Cypress.Commands.add("saveSessionStorageCache", () => {
+    Object.keys(sessionStorage).forEach(key => {
+        SESSION_STORAGE_MEMORY[key] = sessionStorage[key];
+    });
+});
+
+Cypress.Commands.add("restoreSessionStorageCache", () => {
+    Object.keys(SESSION_STORAGE_MEMORY).forEach(key => {
+        sessionStorage.setItem(key, SESSION_STORAGE_MEMORY[key]);
+    });
+});
+
+Cypress.Commands.add("clearSessionStorage", () => {
+    Object.keys(sessionStorage).forEach(key => {
+        sessionStorage.removeItem(key);
+    });
+});
+
+// Keep cookies data
+Cypress.Commands.add('preserveCookies', () => {
+    Cypress.Cookies.preserveOnce('DOCPLANNER_SESSION');
+});
+
+// Additional commands
 Cypress.Commands.add('login', () => {
     cy.visit('http://www.reserved.pl')
     const countryChoose = cy.get('a[class="cart active"]').contains('Polska / Poland').click();
@@ -65,6 +113,16 @@ Cypress.Commands.add('loginMohito', () => {
     submitButton.click();
 });
 
-
-
-
+Cypress.Commands.add('loginZnany', () => {
+    cy.visit('https://www.znanylekarz.pl')
+    const cookiesButton = cy.get('button').contains('Zaakceptuj');
+    cookiesButton.should('be.visible');
+    cookiesButton.click();
+    const logIn = cy.get('[data-test-id="navbar-login');
+    logIn.click();
+    const loginUser = cy.get('[data-test-id="input-username"]').type(Cypress.env('loginZnany'));
+    const passwordUser = cy.get('[data-test-id="input-password"]').type(Cypress.env('passwordZnany'));
+    const submitButton = cy.get('[data-test-id="btn-login"]').contains("Zaloguj się");
+    submitButton.should('be.visible');
+    submitButton.click();
+});
