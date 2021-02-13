@@ -1,6 +1,6 @@
 describe('Log in - with using correct user', () => {
     it('Visits mohito.pl', () => {
-        cy.loginMohito('http://www.mohito.pl');    
+        cy.loginMohito();    
     })
 
     it('Checks if you see Log out option', () => {

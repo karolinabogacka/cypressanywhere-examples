@@ -1,6 +1,6 @@
 describe('Reserve visit to the specjalist - with using correct user', () => {
     it('Visit znanylekarz.pl', () => {
-        cy.loginZnany('https://www.znanylekarz.pl');
+        cy.loginZnany();
     })
 
     it('Check if you are on patient panel', () => {

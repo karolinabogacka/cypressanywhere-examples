@@ -1,6 +1,6 @@
 describe('Log in - with using correct user', () => {
     it('Visits allegro.pl', () => {
-        cy.loginAllegro('http://allegro.pl')
+        cy.loginAllegro();
     })
 
     xit('See Regulamin and accept', () => {
