@@ -14,32 +14,32 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import "./commands";
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-Cypress.on('uncaught:exception', (err, runnable) => {
-    // returning false here prevents Cypress from
-    // failing the test
-    return false
-})
+Cypress.on("uncaught:exception", () => {
+  // returning false here prevents Cypress from
+  // failing the test
+  return false;
+});
 
-Cypress.config('defaultCommandTimeout', 10000);
+Cypress.config("defaultCommandTimeout", 10000);
 
 before(() => {
-    cy.clearCookies();
-    cy.clearLocalStorage();
-    cy.clearSessionStorage();
+  cy.clearCookies();
+  cy.clearLocalStorage();
+  cy.clearSessionStorage();
 });
 
 beforeEach(() => {
-    cy.preserveCookies();
-    cy.restoreSessionStorageCache();
-    cy.restoreLocalStorageCache();
+  cy.preserveCookies();
+  cy.restoreSessionStorageCache();
+  cy.restoreLocalStorageCache();
 });
 
 afterEach(() => {
-    cy.saveSessionStorageCache();
-    cy.saveLocalStorageCache();
+  cy.saveSessionStorageCache();
+  cy.saveLocalStorageCache();
 });
