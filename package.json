@@ -5,10 +5,15 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "cypress": "6.2.1"
+    "cypress": "6.2.1",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^8.1.0",
+    "prettier": "2.2.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cypress:open": "npx run cypress open",
+    "prettier": "npx prettier -w .",
+    "lint": "npx eslint --fix"
   },
   "repository": {
     "type": "git",
