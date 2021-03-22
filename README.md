@@ -1,6 +1,7 @@
 ## CypressAnywhere.io - examples
 
 ### Configuration
+
 Please create `cypress.env.json` file and fill it with the content
 
 ```
@@ -16,9 +17,15 @@ Please create `cypress.env.json` file and fill it with the content
 }
 ```
 
-### Run the project
+### Install the project
 ```bash
-npx cypress open
+npm install
 
 ```
 
+### Run the project
+
+```bash
+npm run cypress:open
+
+```
