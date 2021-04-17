@@ -7,10 +7,10 @@ describe("Testing API - GET method for endpoint /posts", () => {
     response.should((res) => {
       expect(res.headers["content-type"]).to.include("application/json");
       expect(res.status).to.eq(200);
-      const body = res.body;
-      expect(body.length).to.eq(100);
+      const responseBody = res.body;
+      expect(responseBody.length).to.eq(100);
 
-      body.forEach((item) => {
+      responseBody.forEach((item) => {
         expect(item.userId).to.be.a("number");
         expect(item.userId).to.be.greaterThan(0);
         expect(item.id).to.be.a("number");
